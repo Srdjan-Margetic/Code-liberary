@@ -1,0 +1,57 @@
+<div class="template">
+    <div class="template-container">
+        <div class="row">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('wonderbag_top')->toHtml(); ?>
+            <div class="featured-categories">
+                <div class="template">
+    <div class="template-container">
+        <div class="row">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('wonderbag_top')->toHtml(); ?>
+            <div class="featured-categories">
+                <?php
+                $attributesToSelect = array('name', 'image'); //Odredjujemo koje cemo atribute videti
+                $children = Mage::getModel('catalog/category')->getCollection()
+                ->addAttributeToSelect($attributesToSelect) // dodeljujemo varijablu koje atribute da prikazemo; * - prikazi sve
+                ->addAttributeToFilter('parent_id', 73);
+                ?>
+
+                <ul class="categories">
+                    <?php foreach($children as $category) : ?>
+                        <li class="category">
+                            <img src="<?php echo $category->getImageUrl(); ?>" alt="<?php echo $category->getName(); ?>">
+                            <p>
+                                <a href="<?php echo $category->getUrl(); ?>">
+                                    <?php echo $category->getName(); ?>
+                                </a>
+                            </p>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('wonderbag_bottom')->toHtml(); ?>
+        </div>
+    </div>
+</div><?php
+                $attributesToSelect = array('name', 'image');
+                $children = Mage::getModel('catalog/category')->getCollection()
+                ->addAttributeToSelect($attributesToSelect)
+                ->addAttributeToFilter('parent_id', 73);
+                ?>
+
+                <ul class="categories">
+                    <?php foreach($children as $category) : ?>
+                        <li class="category">
+                            <img src="<?php echo $category->getImageUrl(); ?>" alt="<?php echo $category->getName(); ?>">
+                            <p>
+                                <a href="<?php echo $category->getUrl(); ?>">
+                                    <?php echo $category->getName(); ?>
+                                </a>
+                            </p>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('wonderbag_bottom')->toHtml(); ?>
+        </div>
+    </div>
+</div>
